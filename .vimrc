@@ -51,11 +51,19 @@ nnoremap <Tab> >>
 nnoremap <Tab> <<
 
 " plugin
+" Vim-Plug
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" NERDTree
+nnoremap <silent> <F2> :NERDTreeToggle<Enter>
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
